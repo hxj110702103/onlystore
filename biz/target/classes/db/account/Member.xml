@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet id="1" author="Amy">
+        <createTable tableName="member">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="memberName" type="VARCHAR(100)" remarks="会员账号"/>
+            <column name="email" type="VARCHAR(100)" remarks="邮箱" />
+            <column name="mobile" type="VARCHAR(32)" remarks="手机号"/>
+            <column name="password" type="VARCHAR(100)" remarks="密码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="loginType" type="VARCHAR(60)" remarks="登录类型，common普通登录 trustlogin 信任登录"/>
+            <column name="gradeId" type="INT" defaultValue="1" remarks="会员等级">
+                <constraints nullable="false"/>
+            </column>
+            <column name="realName" type="VARCHAR(50)" remarks="真实姓名"/>
+            <column name="birthday" type="DATETIME" remarks="生日"/>
+            <column name="sex" type="VARCHAR(10)" remarks="性别"/>
+            <column name="regIp" type="VARCHAR(16)" remarks="注册IP"/>
+            <column name="regTime" type="DATETIME" remarks="注册时间"/>
+            <column name="deleted" type="TINYINT" defaultValue="0" remarks="是否有效"/>
+            <column name="emailVerify" type="TINYINT" defaultValue="0" remarks="是否通过邮箱验证"/>
+            <column name="failedLogins" type="INT" defaultValue="0" remarks="失败登录次数"/>
+            <column name="lockedOutUntil" type="DATETIME" remarks="账户锁定截止时间"/>
+            <column name="passwdResetTocken" type="VARCHAR(100)" remarks="密码重置令牌"/>
+            <column name="passwdResetTokenValidUntil" type="DATETIME" remarks="密码重置令牌有效时间"/>
+            <column name="activeToken" type="VARCHAR(100)" remarks="邮箱激活令牌"/>
+            <column name="createTime" type="DATETIME" remarks="创建时间"/>
+            <column name="updateTime" type="DATETIME" remarks="修改时间"/>
+            <column name="parentId" type="BIGINT" remarks="主账号ID"/>
+            <column name="sourceChannel" type="VARCHAR(60)" remarks="来源渠道，B2C,B2B,CHANNEL,POS"/>
+            <column name="sourceMemo" type="VARCHAR(255)" remarks="来源备注"/>
+            <column name="referrerId" type="BIGINT" remarks="推荐人ID"/>
+            <column name="valid" type="TINYINT" remarks="可用"/>
+            <column name="isTrustLogin" type="TINYINT" defaultValue="0" remarks="用户本次登录为信任登录时，该位为true"/>
+        </createTable>
+        <addUniqueConstraint columnNames="email" constraintName="idx_member_email" tableName="member"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.han.onlystore.biz.mapper.account.MemberMapper">
+    <select id="findById" parameterType="long" resultType="com.han.onlystore.base.model.account.Member">
+        SELECT *
+        FROM member
+        WHERE id = #{id};
+    </select>
+    <select id="findAll" resultType="com.han.onlystore.base.model.account.Member">
+        SELECT * FROM member;
+    </select>
+
+    <insert id="create" parameterType="com.han.onlystore.base.model.account.Member" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO member(
+        memberName,
+        email,
+        mobile,
+        password,
+        loginType,
+        gradeId,
+        realName,
+        birthday,
+        sex,
+        regIp,
+        regTime,
+        deleted,
+        emailVerify,
+        createTime,
+        updateTime
+        )
+        VALUES(
+        #{memberName},
+        #{email},
+        #{mobile},
+        #{password},
+        #{loginType},
+        #{gradeId},
+        #{realName},
+        #{birthday},
+        #{sex},
+        #{regIp},
+        #{regTime},
+        FALSE,
+        FALSE,
+        NOW(),
+        NOW()
+        )
+        <selectKey resultType="long" keyProperty="id">
+            SELECT @@IDENTITY AS id;
+        </selectKey>
+    </insert>
+
+    <update id="update" parameterType="com.han.onlystore.base.model.account.Member">
+        UPDATE member
+        SET
+        memberName = #{memberName},
+        email = #{email},
+        mobile = #{mobile},
+        loginType = #{loginType},
+        updateTime = NOW(),
+        gradeId = #{gradeId},
+        realName = #{realName},
+        birthday = #{birthday},
+        sex = #{sex},
+        deleted = #{deleted},
+        parentId=#{parentId},
+        sourceChannel = #{sourceChannel},
+        sourceMemo=#{sourceMemo},
+        referrerId = #{referrerId},
+        valid=#{valid}
+        WHERE id = #{id};
+    </update>
+
+    <select id="searchList" parameterType="com.han.onlystore.base.model.account.condition.MemberSearchPageCondition"
+            resultType="com.han.onlystore.base.model.account.bo.MemberBo">
+        SELECT *
+        FROM member
+    </select>
+    <select id="searchCount" parameterType="com.han.onlystore.base.model.account.condition.MemberSearchPageCondition"
+            resultType="java.lang.Integer">
+        SELECT COUNT(1)
+        from member
+    </select>
+
+    <select id="findOne" parameterType="com.han.onlystore.base.model.account.Member"
+            resultType="com.han.onlystore.base.model.account.Member">
+        SELECT *
+        FROM member
+        WHERE 1=1
+        <if test="memberName != null and memberName != ''">
+            AND memberName = #{memberName}
+        </if>
+    </select>
+
+    <update id="updateForAuthLoginInfo" parameterType="com.han.onlystore.base.model.account.Member">
+        UPDATE member
+        SET
+        failedLogins = #{failedLogins},
+        lockedOutUntil = #{lockedOutUntil}
+    </update>
+</mapper>

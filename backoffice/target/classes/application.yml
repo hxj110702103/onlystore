@@ -1,0 +1,48 @@
+server:
+  port: 8081
+  session:
+    timeout: 480
+  compression:
+     enabled: true
+     mime-types: text/html,text/xml,text/plain,text/css,application/json,application/javascript,image/svg+xml,application/x-font-ttf,application/x-font-truetype,application/x-font-opentype,application/vnd.ms-fontobject,application/font-sfnt
+  use-forward-headers: true
+
+#httpinvoker - proxy
+httpinvoker:
+  type: proxy
+  scan-paths:
+    - com.han.onlystore.base.service
+  url: http://localhost:8082/remoting/
+
+# SPRING AUTOCONFIGURE
+spring:
+  resources:
+    cache-period: 31556926
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss Z
+    locale: zh_CN
+#    serialization:
+#      indent_output: true
+  #Message source
+  messages:
+    basename: i18n/messages,i18n/exception
+    cache-seconds: 60
+    encoding: UTF-8
+
+security:
+  ignored:
+    - /resources/**
+    - /packages/**
+    - /app.js
+    - /app.json
+    - /api*.js
+    - /captcha.jpg
+    - /images/**
+    - /cache.appcache
+    - /i18n.js
+    - /fileupload
+    - /jquery.min.js
+    - /jquery.ba-throttle-debounce.min.js
+    - /jquery.poshytip.min.js
+    - /jquery.nivo.slider.js
+    - /*

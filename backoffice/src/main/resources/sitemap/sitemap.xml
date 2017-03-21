@@ -1,0 +1,9 @@
+<menu>
+<children>
+    <menu text="账号管理" view="" routeId="" iconCls="x-fa fa-object-group">
+        <children>
+            <menu text="用户管理" view="account.member.List" routeId="account.member.index" iconCls="x-fa fa-user-plus"></menu>
+        </children>
+    </menu>
+</children>
+</menu>
