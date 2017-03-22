@@ -36,7 +36,7 @@ public class EmailProperties {
     }
 
     public String getMailSmtpAuth() {
-        return mailSjamtpAuth;
+        return mailSmtpAuth;
     }
 
     public void setMailSmtpAuth(String mailSmtpAuth) {
