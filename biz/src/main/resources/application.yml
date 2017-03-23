@@ -17,8 +17,6 @@ spring:
     locale: zh_CN
   serialization:
     indent_output: true
-  cache:
-    type: guava
 
 dataSource:
   master:

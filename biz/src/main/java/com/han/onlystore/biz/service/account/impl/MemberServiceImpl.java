@@ -5,6 +5,8 @@ import com.han.onlystore.base.service.account.MemberService;
 import com.han.onlystore.biz.mapper.account.MemberMapper;
 import com.han.onlystore.biz.utils.JavaMail;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
@@ -12,6 +14,7 @@ import javax.mail.MessagingException;
 /**
  * Created by apple on 2017/2/19.
  */
+@CacheConfig(cacheNames = "memberService")
 @Service
 public class MemberServiceImpl implements MemberService{
     @Autowired
@@ -23,10 +26,12 @@ public class MemberServiceImpl implements MemberService{
         memberMapper.create(member);
     }
 
+    @Cacheable
     public Member getById(Long id) {
         return memberMapper.findById(id);
     }
 
+    @Cacheable
     public  Member findByUsername(String username) {
         Member member = new Member();
         member.setMemberName(username);
@@ -35,8 +40,6 @@ public class MemberServiceImpl implements MemberService{
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
 
         return memberMapper.findOne(member);
     }
