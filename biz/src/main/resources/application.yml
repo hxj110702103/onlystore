@@ -17,6 +17,14 @@ spring:
     locale: zh_CN
   serialization:
     indent_output: true
+  redis:
+    host: localhost
+    port: 6379
+    pool:
+      max-idle: 10
+      min-idle: 2
+      max-active: 80
+      max-wait: -1
 
 dataSource:
   master:
