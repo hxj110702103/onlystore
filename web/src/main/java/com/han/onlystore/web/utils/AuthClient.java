@@ -21,7 +21,7 @@ public class AuthClient {
     public static JSONObject doGetJson(String url) throws IOException {
         JSONObject jsonObject = new JSONObject();
         DefaultHttpClient client = new DefaultHttpClient();
-        HttpGet httpGet = new HttpGet(URLEncoder.encode(url));
+        HttpGet httpGet = new HttpGet(url);
         HttpResponse response = client.execute(httpGet);
 
         HttpEntity entity = response.getEntity();

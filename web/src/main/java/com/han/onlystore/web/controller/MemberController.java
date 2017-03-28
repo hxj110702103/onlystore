@@ -1,6 +1,7 @@
 package com.han.onlystore.web.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.han.onlystore.web.utils.AuthClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,9 +41,21 @@ public class MemberController {
                 "appid=" + AuthClient.AppID +
                 "&secret=" + AuthClient.AppSecret +
                 "&code=" + code +
-                "&grant_type=authorization_code ";
+                "&grant_type=authorization_code";
         JSONObject jsonObject = AuthClient.doGetJson(url);
         String openid = jsonObject.getString("openid");
         String accessToken = jsonObject.getString("access_token");
+
+        String infoUrl = "https://api.weixin.qq.com/sns/userinfo?" +
+                "access_token=" + accessToken +
+                "&openid=" + openid +
+                "&lang=zh_CN";
+        JSONObject userInfo = AuthClient.doGetJson(infoUrl);
+        if(userInfo != null) {
+            String nickname = userInfo.getString("nickname");
+            String province = userInfo.getString("province");
+            String city = userInfo.getString("city");
+            String country = userInfo.getString("country");
+        }
     }
 }
