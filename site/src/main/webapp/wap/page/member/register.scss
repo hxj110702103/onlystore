@@ -1,0 +1,112 @@
+.register {
+  overflow: hidden;
+  .page_bd {
+    .profile_tab {
+      .navbar {
+        width:100%;
+        height: 50px;
+        line-height: 47px;
+        overflow: hidden;
+        border-bottom: 1px solid #ccc;
+        .navbar__item {
+          width:50%;
+          float: left;
+          text-align: center;
+          font-size: 16px;
+        }
+        .bar__item_on {
+          color: #35baf6;
+          border-bottom: 3px solid #35baf6;
+        }
+      }
+      .select_type {
+        height: 300px;
+        margin: 50px;
+        overflow: hidden;
+        .info_item {
+          float: left;
+          width: 50%;
+          font-size: 20px;
+          .info_title,.info_icon {
+            text-align: center;
+            i {
+              font-size: 80px;
+            }
+          }
+        }
+        .selected {
+          color: #35baf6;
+        }
+      }
+      .info_complete {
+        padding: 20px;
+        .weui-btn+.weui-btn {
+          margin-top: 20px;
+        }
+        .code_verify {
+          height: 27px;
+          line-height: 27px;
+          font-size: 12px;
+          padding: 0 8px;
+          margin-top: 8px;
+          position: absolute;
+          top: 5px;
+          right: 5px;
+          background: url(../../static/images/WX-H5-37.png) no-repeat -10px -6px;
+        }
+        .enable_bg {
+          background: url(../../static/images/WX-H5-37.png) no-repeat -10px -6px;
+        }
+        .disable_bg {
+          color:#000;
+          background: url(../../static/images/WX-H5-36.png) no-repeat -10px -6px;
+        }
+        .customer_info {
+          background-color: #f3f3f3;
+          margin: 13px 4px;
+          border-radius: 5px;
+          height: 80px;
+          box-shadow: 2px 2px 5px #969696;
+          display: none;
+          .cust_title {
+            height: 25px;
+            line-height: 25px;
+            font-size: 14px;
+            padding: 0 25px;
+            border-bottom: 1px solid #d9d9d9;
+          }
+          .cust_info {
+            font-size: 14px;
+            height: 20px;
+            padding: 5px 0 0 25px;
+          }
+        }
+        .weui-cell:before {
+          border-top: none;
+        }
+        .weui-cell {
+          border-bottom: 1px solid #d9d9d9;
+          .weui-input {
+            font-size:16px;
+          }
+          .weui-label {
+            width: 80px;
+          }
+        }
+        .finish {
+          background-color: #35baf6;
+        }
+      }
+    }
+  }
+  .weui-picker-modal .picker-item {
+    font-size: 16px!important;
+  }
+
+  .iconfont {
+    font-size: 20px;
+  }
+  .hidden {
+    display: none;
+  }
+}

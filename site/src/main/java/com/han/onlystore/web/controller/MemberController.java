@@ -16,13 +16,17 @@ import java.net.URLEncoder;
 /**
  * Created by Amy on 2017/3/28.
  */
-@RestController
+@Controller
 @RequestMapping("member")
 public class MemberController {
 
+    @RequestMapping("register")
+    public String register() {
+        return "/wap/page/member/register";
+    }
+
     @RequestMapping("index")
     public void index(HttpServletResponse response) throws IOException {
-
         String backUrl = "http://anycall.ants-city.com/member/urlCallback";
         String url = "https://open.weixin.qq.com/connect/oauth2/authorize?" +
                 "appid=" + AuthClient.AppID +

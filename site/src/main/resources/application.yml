@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+spring:
+  velocity:
+    cache: true
+    resource-loader-path: classpath:/public/views/
+    toolbox-config-location: /velocity-toolbox.xml
+    number-tool-attribute: number
+    properties:
+      input.encoding: utf-8
+      output.encoding: utf-8
+      userdirective: com.baidu.fis.velocity.directive.Html, com.baidu.fis.velocity.directive.Head,
+        com.baidu.fis.velocity.directive.Body, com.baidu.fis.velocity.directive.Require,
+        com.baidu.fis.velocity.directive.Script, com.baidu.fis.velocity.directive.Style,
+        com.baidu.fis.velocity.directive.Uri, com.baidu.fis.velocity.directive.Block,
+        com.baidu.fis.velocity.directive.Extends, com.baidu.fis.velocity.directive.Widget
