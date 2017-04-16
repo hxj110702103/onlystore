@@ -6,7 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/base/base.iml" filepath="$PROJECT_DIR$/base/base.iml" />
       <module fileurl="file://$PROJECT_DIR$/biz/biz.iml" filepath="$PROJECT_DIR$/biz/biz.iml" />
       <module fileurl="file://$PROJECT_DIR$/onlystore.iml" filepath="$PROJECT_DIR$/onlystore.iml" />
-      <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/site/site.iml" filepath="$PROJECT_DIR$/site/site.iml" />
     </modules>
   </component>
 </project>
